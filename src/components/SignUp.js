@@ -4,7 +4,6 @@ import { useState } from "react";
 import axios from "axios";
 
 export default function SignUp(){
-
     const navigate = useNavigate();
     const [ userInfo, setUserInfo ] = useState({
         name: "",

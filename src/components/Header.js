@@ -1,8 +1,14 @@
+import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 import logo from "../assets/logo.png";
 
 export default function Header(){    
+    
+    const location = useLocation();
+    const green = "#5D9040";
+    const grey = "#9C9C9C";
+
+
     return (
         <Container>
             <Menu>
@@ -14,8 +20,8 @@ export default function Header(){
                     </div>
                 :
                     <div>
-                        <ItemMenu color="#5D9040"><Link to="/signin">Entrar</Link></ItemMenu>
-                        <ItemMenu color="#9C9C9C"><Link to="/signup">Cadastrar-se</Link></ItemMenu>
+                        <ItemMenu color= {location.pathname === "/signin" ? green : grey } ><Link to="/signin">Entrar</Link></ItemMenu>
+                        <ItemMenu color= {location.pathname === "/signup" ? green : grey } ><Link to="/signup">Cadastrar-se</Link></ItemMenu>
                     </div>
                 }
             </Menu>

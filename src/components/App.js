@@ -13,6 +13,7 @@ export default function App(){
             <Header />
             <Routes>
                 <Route path="/" element={<Ranking />} />
+                <Route path="/ranking" element={<Ranking />} />
                 <Route path="/signup" element={<SignUp />} />
                 <Route path="/signin" element={<SignIn />} />
             </Routes>        

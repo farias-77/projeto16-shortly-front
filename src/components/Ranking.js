@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
@@ -30,12 +31,12 @@ export default function Ranking(){
             </Title>
             <RankingBox>
                 { ranking.length > 0 ? 
-                ranking.map((user,index) => <h5><strong>{index}. {user.name}</strong> - {user.linksCount} links - {user.visitCount} visualizações</h5>)
+                ranking.map((user,index) => <h5><strong>{index+1}. {user.name}</strong> - {user.linksCount} links - {user.visitCount} visualizações</h5>)
                 :    
                 "Não encontramos nenhum registro :("
                 }
             </RankingBox>
-            <h4>Crie sua conta para usar nosso serviço!</h4>
+            {localStorage.getItem("token") ? <></> : <h4>Crie sua conta para usar nosso serviço!</h4>}
         </Container>
     )
 }

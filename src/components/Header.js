@@ -1,13 +1,19 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import logo from "../assets/logo.png";
 
 export default function Header(){    
     
+    const navigate = useNavigate();
     const location = useLocation();
     const green = "#5D9040";
     const grey = "#9C9C9C";
 
+    function exit(){
+        localStorage.removeItem("token");
+        navigate("/");
+        window.location.reload();
+    }
 
     return (
         <Container>
@@ -16,7 +22,7 @@ export default function Header(){
                     <div>
                         <ItemMenu color="#9C9C9C"><Link to="/home">Home</Link></ItemMenu>
                         <ItemMenu color="#9C9C9C"><Link to="/ranking">Ranking</Link></ItemMenu>
-                        <ItemMenu color="#9C9C9C"><Link to="/signin">Sair</Link></ItemMenu>
+                        <ItemMenu color="#9C9C9C" onClick={exit}><p>Sair</p></ItemMenu>
                     </div>
                 :
                     <div>
@@ -83,6 +89,17 @@ const Logo = styled.div`
 
 const ItemMenu = styled.div`
     a{
-        color: ${props => props.color}
+        color: ${props => props.color};
+        cursor: pointer;
+    }
+
+    p{
+        color: ${props => props.color};
+        margin-right: 15px;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 18px;
+
+        cursor: pointer;
     }
 `;

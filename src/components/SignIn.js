@@ -18,7 +18,8 @@ export default function SignIn(){
         const url = "https://projeto16-shortly-farias-77.herokuapp.com/signin";
 
         const promise = axios.post(url, userInfo);
-        promise.then(() => {
+        promise.then((res) => {
+            localStorage.setItem("token", res.data)
             navigate("/home");
         });
 

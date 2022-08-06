@@ -7,21 +7,19 @@ export default function SignIn(){
 
     const navigate = useNavigate();
     const [ userInfo, setUserInfo ] = useState({
-        name: "",
         email: "",
-        password: "",
-        confirmPassword: ""
+        password: ""
     });
     
     
-    function submitSignUp(e){
+    function submitSignIn(e){
         e.preventDefault();
         
-        const url = "https://projeto16-shortly-farias-77.herokuapp.com/signup";
+        const url = "https://projeto16-shortly-farias-77.herokuapp.com/signin";
 
         const promise = axios.post(url, userInfo);
         promise.then(() => {
-            navigate("/signin");
+            navigate("/home");
         });
 
         promise.catch((res) => {
@@ -32,7 +30,7 @@ export default function SignIn(){
     return (
         <Container>
             <Form>
-                <form onSubmit={submitSignUp}>
+                <form onSubmit={submitSignIn}>
                     <input type="email" placeholder="E-mail" onChange={e => setUserInfo( { ...userInfo, email: e.target.value } ) } />
                     <input type="password" placeholder="Senha" onChange={e => setUserInfo( { ...userInfo, password: e.target.value } ) } />
                     <button type="submit">Entrar</button>

@@ -46,7 +46,7 @@ export default function SignUp(){
 const Container = styled.div`
     width: 100%;
     
-    margin-top: 100px;
+    margin-top: 60px;
     
     display: flex;
     justify-content: center;

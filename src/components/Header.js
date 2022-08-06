@@ -20,15 +20,16 @@ export default function Header(){
                     </div>
                 :
                     <div>
-                        <ItemMenu color= {location.pathname === "/signin" ? green : grey } ><Link to="/signin">Entrar</Link></ItemMenu>
+                        <ItemMenu color= {location.pathname === "/signin" || location.pathname === "/" ? green : grey } ><Link to="/signin">Entrar</Link></ItemMenu>
                         <ItemMenu color= {location.pathname === "/signup" ? green : grey } ><Link to="/signup">Cadastrar-se</Link></ItemMenu>
                     </div>
                 }
             </Menu>
-            <Logo>
+            <Link to="/"><Logo>
                 <h1>Shortly</h1>
                 <img src={logo} alt="logo" />
-            </Logo>
+                </Logo>
+            </Link>
         </Container>
     )
 }

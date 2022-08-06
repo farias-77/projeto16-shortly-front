@@ -8,8 +8,8 @@ export default function Header(){
             <Menu>
                 { !!localStorage.getItem("token") ? 
                     <div>
-                        <ItemMenu color="#9C9C9C"><Link to="/signin">Home</Link></ItemMenu>
-                        <ItemMenu color="#9C9C9C"><Link to="/signin">Ranking</Link></ItemMenu>
+                        <ItemMenu color="#9C9C9C"><Link to="/home">Home</Link></ItemMenu>
+                        <ItemMenu color="#9C9C9C"><Link to="/ranking">Ranking</Link></ItemMenu>
                         <ItemMenu color="#9C9C9C"><Link to="/signin">Sair</Link></ItemMenu>
                     </div>
                 :
@@ -29,15 +29,14 @@ export default function Header(){
 
 const Container =  styled.div`
     width: 100%;
-
     display: flex;
     flex-direction: column;
-
+    
     img{
         width: 100px;
     }
 
-    margin-top:60px;
+    margin-top: 60px;
 `;
 
 const Menu = styled.div`
@@ -52,6 +51,8 @@ const Menu = styled.div`
         font-weight: 400;
         font-size: 14px;
         line-height: 18px;
+
+        cursor: pointer;
     }
 
     > div{
@@ -62,11 +63,10 @@ const Menu = styled.div`
 
 const Logo = styled.div`
     width: 100%;
-    height: 180px;
     
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
 
     font-weight: 300;
     font-size: 64px;

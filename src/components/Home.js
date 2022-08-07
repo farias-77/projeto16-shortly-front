@@ -43,7 +43,7 @@ export default function Home({ user, setUser }){
         });
 
         promise.catch((res) => {
-            alert(res.data);
+            alert(res.response.data);
         });
     }
 

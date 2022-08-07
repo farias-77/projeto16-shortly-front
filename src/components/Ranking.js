@@ -31,7 +31,7 @@ export default function Ranking(){
             </Title>
             <RankingBox>
                 { ranking.length > 0 ? 
-                ranking.map((user,index) => <h5><strong>{index+1}. {user.name}</strong> - {user.linksCount} links - {user.visitCount} visualizações</h5>)
+                ranking.map((user,index) => <h5 key={index}><strong>{index+1}. {user.name}</strong> - {user.linksCount} links - {user.visitCount} visualizações</h5>)
                 :    
                 "Não encontramos nenhum registro :("
                 }

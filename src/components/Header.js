@@ -2,10 +2,10 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import logo from "../assets/logo.png";
 
-export default function Header(){    
+export default function Header({ user }){    
     
-    const navigate = useNavigate();
     const location = useLocation();
+    const navigate = useNavigate();
     const green = "#5D9040";
     const grey = "#9C9C9C";
 
@@ -19,11 +19,16 @@ export default function Header(){
         <Container>
             <Menu>
                 { !!localStorage.getItem("token") ? 
-                    <div>
-                        <ItemMenu color="#9C9C9C"><Link to="/home">Home</Link></ItemMenu>
-                        <ItemMenu color="#9C9C9C"><Link to="/ranking">Ranking</Link></ItemMenu>
-                        <ItemMenu color="#9C9C9C" onClick={exit}><p>Sair</p></ItemMenu>
-                    </div>
+                    <MenuLogged>
+                        <div>
+                            <ItemMenu color={green}><p>{location.pathname === "/home" && user ? `Seja bem-vindo(a), ${user.name}!` : <></> }</p></ItemMenu>
+                        </div>
+                        <div>
+                            <ItemMenu color={grey}><Link to="/home">Home</Link></ItemMenu>
+                            <ItemMenu color={grey}><Link to="/">Ranking</Link></ItemMenu>
+                            <ItemMenu color={grey} onClick={exit}><p>Sair</p></ItemMenu>
+                        </div>
+                    </MenuLogged>
                 :
                     <div>
                         <ItemMenu color= {location.pathname === "/signin" || location.pathname === "/" ? green : grey } ><Link to="/signin">Entrar</Link></ItemMenu>
@@ -44,6 +49,7 @@ const Container =  styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
+    align-items: center;
     
     img{
         width: 100px;
@@ -53,7 +59,7 @@ const Container =  styled.div`
 `;
 
 const Menu = styled.div`
-    width: 100%;
+    width: 90%;
     height: 20px;
     
     display: flex;
@@ -70,7 +76,7 @@ const Menu = styled.div`
 
     > div{
         display: flex;
-        margin-right: 60px;
+        padding: 0 60px;
     }   
 `;
 
@@ -101,5 +107,16 @@ const ItemMenu = styled.div`
         line-height: 18px;
 
         cursor: pointer;
+    }
+`;
+
+const MenuLogged = styled.div`
+    width: 100%;
+    padding:0 60px;
+    
+    justify-content: space-between;
+
+    > div:last-child{
+        display: flex;
     }
 `;

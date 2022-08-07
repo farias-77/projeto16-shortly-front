@@ -33,7 +33,7 @@ export default function Ranking(){
                 { ranking.length > 0 ? 
                 ranking.map((user,index) => <h5 key={index}><strong>{index+1}. {user.name}</strong> - {user.linksCount} links - {user.visitCount} visualizações</h5>)
                 :    
-                "Não encontramos nenhum registro :("
+                <h5>{`Não encontramos nenhum registro :(`}</h5>
                 }
             </RankingBox>
             {localStorage.getItem("token") ? <></> : <h4>Crie sua conta para usar nosso serviço!</h4>}
@@ -93,6 +93,11 @@ const RankingBox = styled.div`
     font-size: 22px;
     line-height: 28px;
     color: #000000;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
     h5{
         margin-bottom: 15px;

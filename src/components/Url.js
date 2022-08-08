@@ -38,10 +38,10 @@ export default function Url({ url }){
     
     return(
         <UrlCard>
-            <UrlInfo onClick={openUrl}>
-                <h3>{url.url}</h3>
-                <h3>{url.shortUrl}</h3>
-                <h3>Quantidade de visitantes: {url.visitCount}</h3>
+            <UrlInfo>
+                <div><h3 onClick={openUrl}>{url.url.length > 25 ? `${url.url.slice(0,25)}...` : url.url}</h3></div>
+                <div><h3 onClick={openUrl}>{url.shortUrl}</h3></div>
+                <div><h3>Quantidade de visitantes: {url.visitCount}</h3></div>
             </UrlInfo>
             <Delete onClick={deleteUrl}>
                 <ion-icon name="trash"></ion-icon>
@@ -66,18 +66,28 @@ const UrlCard = styled.div`
 const UrlInfo = styled.div`
     width: 88%;
     background-color: #80CC74;
+    
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
-    cursor: pointer;
 
     border-radius: 12px 0px 0px 12px;
+
+    > div{
+        display: flex;
+        justify-content: center;
+        width: 33%;
+    }
 
     h3{
         font-weight: 400;
         font-size: 16px;
         line-height: 18px;
-        color: #FFFFFF;
+        color: #FFFFFF;  
+    }
+
+    h3:first-child, h3:nth-child(2){
+        cursor: pointer;
     }
 `;
 
